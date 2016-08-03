@@ -32,7 +32,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, WKSc
 //        let content = try! String(contentsOfFile: carkeyHtml!);
 //        self.web?.loadHTMLString(content, baseURL: nil);
 
-        self.web?.loadRequest(NSURLRequest(URL: NSURL(string: "http://127.0.0.1:8020/HelloHBuilder/3.html")!));
+        self.web?.loadRequest(NSURLRequest(URL: NSURL(string: "http://127.0.0.1:8020/js_opp/index3.html")!));
         self.view.addSubview(self.web!);
         
     }
@@ -56,12 +56,19 @@ extension ViewController{
                 
                 let className = res["className"]?.description;
                 let functionName = res["functionName"]?.description;
-                
-                if let cls = NSClassFromString((NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleName")!.description)! + "." + className!) as? NSObject.Type {
+                let params = res["data"]?.description;
+                if className!.isEmpty || functionName!.isEmpty{
+                    return
+                }
+                if let cls = NSClassFromString((NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleName")!.description)! + "." + className!) as? JSPlugin.Type {
                     let obj = cls.init();
+                    obj._web = self.web;
+                    obj._data = params;
+                    obj._taskId = res["taskId"]?.integerValue;
                     let functionSelector = Selector(functionName!);
                     if obj.respondsToSelector(functionSelector) {
-                        obj.performSelector(functionSelector);
+                        obj.performSelector(functionSelector, withObject: params);
+                        obj.callback(["1":2] as NSDictionary, compeletion: nil);
                     }else{
                         print("这个方法没有找到");
                     }

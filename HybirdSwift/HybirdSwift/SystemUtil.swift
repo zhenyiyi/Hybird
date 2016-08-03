@@ -13,7 +13,9 @@ class SystemUtil: NSObject {
 
     func call(tel : String?) {
         print("will call \(tel) 注释：有参数");
-        UIApplication.sharedApplication().openURL(NSURL(string: "tel://\(tel)")!);
+        if let phoneNumber = tel {
+            UIApplication.sharedApplication().openURL(NSURL(string: "tel://\(phoneNumber)")!);
+        }
     }
     func call() {
         print("call --> 注释：没有参数")

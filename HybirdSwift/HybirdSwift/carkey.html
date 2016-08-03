@@ -8,21 +8,60 @@
         <p>测试JS 调用 swift 通过WkWebview</p>
         <input type="button" id="invokeNative" value="调用Native Function(1)" />
         <input type="button" id="alert" value="显示alert窗口" />
-        
-        
+        <p>自定义打印日志</p>
         <script type="text/javascript">
-            var btn = document.getElementById("invokeNative");
-            console.log(window.webkit.messageHandlers);
-            btn.onclick = function(){
-                window.webkit.messageHandlers.fenglin.postMessage("Hello native");
-                window.webkit.messageHandlers.fenglin.postMessage({"function":"call","tel":15618211029});
+            var console = {
+                log : function(taskId, message){
+                    window.webkit.messageHandlers.fenglin.postMessage({"className":"Conlose","functionName":"log","taskId":taskId,"data":message});
+                }
+            }
+        </script>
+        <script type="text/javascript">
+            
+            Queue = [];
+            Task = {
+                id: 0,
+                callback: function(){},
+                errorCallback: function(){},
+                init: function(id, callback, errorCallback) {
+                    this.id = id;
+                    this.callback = callback;
+                    this.errorCallback = errorCallback;
+                    return this
+                }
             };
+        fireTask = function(taskId, j) {
+            alert(Queue[taskId]);
+            Queue[taskId].callback(JSON.parse(j));
+            Queue.splice(taskId,1);
+            
+        };
+        onError = function (i, j) {
+            Queue[i].errorCallback(j);
+            alert(Queue[i]);
+            Queue.splice(i,1);
+        };
+        
+        
+        var btn = document.getElementById("invokeNative");
+        
+        btn.onclick = function(){
+            
+            Queue.push(Task.init(Queue.length));
+            window.webkit.messageHandlers.fenglin.postMessage({"className":"Conlose","functionName":"log","taskId":Queue.length-1,"data":'message'});
+            
+            //          	 	console.log(1,"invokeNative success");
+            //              window.webkit.messageHandlers.fenglin.postMessage("Hello native");
+            //				window.webkit.messageHandlers.fenglin.postMessage({"className":"SystemUtil","functionName":"call:","data":15618211029});
+            //              window.webkit.messageHandlers.fenglin.postMessage({"className":"SystemUtil","functionName":"call","data":15618211029});
+        };
         
         var btn2 = document.getElementById("alert");
         btn2.onclick = function(){
             //				alert("AAA");
-            window.webkit.messageHandlers.fenglin.postMessage({"className":"SystemUtil","functionName":"call:"});
+            window.webkit.messageHandlers.fenglin.postMessage({"className":"SystemUtil","functionName":"call"})
         }
-        </script>
+        
+            </script>
     </body>
 </html>

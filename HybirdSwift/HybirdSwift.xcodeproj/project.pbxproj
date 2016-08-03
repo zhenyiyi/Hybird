@@ -14,6 +14,7 @@
 		515E999F1D51ED510093379E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 515E999D1D51ED510093379E /* LaunchScreen.storyboard */; };
 		515E99A71D51EFA40093379E /* carkey.html in Resources */ = {isa = PBXBuildFile; fileRef = 515E99A61D51EFA40093379E /* carkey.html */; };
 		515E99A91D5208DC0093379E /* SystemUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515E99A81D5208DC0093379E /* SystemUtil.swift */; };
+		51829B7E1D52200400CA5B8F /* JSPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51829B7D1D52200300CA5B8F /* JSPlugin.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		515E99A01D51ED510093379E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		515E99A61D51EFA40093379E /* carkey.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = carkey.html; sourceTree = "<group>"; };
 		515E99A81D5208DC0093379E /* SystemUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemUtil.swift; sourceTree = "<group>"; };
+		51829B7D1D52200300CA5B8F /* JSPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSPlugin.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				515E99941D51ED510093379E /* AppDelegate.swift */,
 				515E99961D51ED510093379E /* ViewController.swift */,
 				515E99A81D5208DC0093379E /* SystemUtil.swift */,
+				51829B7D1D52200300CA5B8F /* JSPlugin.swift */,
 				515E99A61D51EFA40093379E /* carkey.html */,
 				515E99981D51ED510093379E /* Main.storyboard */,
 				515E999B1D51ED510093379E /* Assets.xcassets */,
@@ -143,6 +146,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				515E99A91D5208DC0093379E /* SystemUtil.swift in Sources */,
+				51829B7E1D52200400CA5B8F /* JSPlugin.swift in Sources */,
 				515E99971D51ED510093379E /* ViewController.swift in Sources */,
 				515E99951D51ED510093379E /* AppDelegate.swift in Sources */,
 			);
@@ -296,6 +300,7 @@
 				515E99A51D51ED510093379E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
