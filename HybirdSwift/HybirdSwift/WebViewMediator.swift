@@ -79,10 +79,10 @@ class WebViewMediator : NSObject , WebViewMediatorDelegate, WKNavigationDelegate
         self._web = WKWebView(frame: _viewController!.view.bounds, configuration: configure);
         self._web?.navigationDelegate = self;
         self._web?.UIDelegate = self;
-        //        let carkeyHtml = NSBundle.mainBundle().pathForResource("carkey", ofType: "html");
-        //        let content = try! String(contentsOfFile: carkeyHtml!);
-        //        self.web?.loadHTMLString(content, baseURL: nil);
-        self._web?.loadRequest(NSURLRequest(URL: NSURL(string: "http://127.0.0.1:8020/HelloHBuilder/3.html")!));
+        let carkeyHtml = NSBundle.mainBundle().pathForResource("carkey", ofType: "html");
+        let content = try! String(contentsOfFile: carkeyHtml!);
+        self._web?.loadHTMLString(content, baseURL: nil);
+//        self._web?.loadRequest(NSURLRequest(URL: NSURL(string: "http://127.0.0.1:8020/HelloHBuilder/3.html")!));
         _viewController!.view.addSubview(self._web!);
     }
     
