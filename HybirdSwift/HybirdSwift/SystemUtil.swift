@@ -9,15 +9,9 @@
 import UIKit
 
 
-class SystemUtil: NSObject {
+class SystemUtil: JSPlugin {
 
-    func call(tel : String?) {
-        print("will call \(tel) 注释：有参数");
-        if let phoneNumber = tel {
-            UIApplication.sharedApplication().openURL(NSURL(string: "tel://\(phoneNumber)")!);
-        }
-    }
-    func call() {
-        print("call --> 注释：没有参数")
+    func js_call() {
+        UIApplication.sharedApplication().openURL(NSURL(string: "tel://\(self._data!["phoneNumber"]!)")!);
     }
 }

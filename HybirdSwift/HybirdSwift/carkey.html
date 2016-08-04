@@ -2,64 +2,90 @@
 <html>
     <head>
         <meta charset="UTF-8">
-            <title></title>
-            </head>
+            <meta name="viewport" content="width=device-width,initial-scale=1">
+                <title></title>
+                <style>
+                    p {
+                        word-break: break-all;
+                    }
+                </style>
+                </head>
     <body>
         <p>测试JS 调用 swift 通过WkWebview</p>
-        <input type="button" id="invokeNative" value="调用Native Function(1)" />
-        <input type="button" id="alert" value="显示alert窗口" />
-        <p>自定义打印日志</p>
+        <p>JS统一通过“window.webkit.messageHandlers.fenglin.postMessage()调用iOS代码”</p>
+        <p>定义的协议：参数类型{
+        "classMap":"类名",
+        "method":"方法名",
+        "params": "参数，一般为map",
+        "callbackId": "回调ID"	 }
+        </p>
+        <input type="button" id="invokeNative1" value="调用Native Function(1)" />
+        <p>注释1：此方法通过 继承JSPlugin, 实现JS调用native。</p>
+        <input type="button" id="invokeNative2" value="调用Native Function(2)" />
+        <p>注释2：此方法通过 实现 JSNativeResponseDelegate接口。实现JS调用native</p>
+        <input type="button" id="alert" value="显示iOS系统alert窗口" />
+        <p>注释2：此方法通过 对html5显示系统自带的alert窗口，也可以自定义。</p>
+        <p>另外：实现了JS调用console.log(), 在xcode窗口显示其打印日志，此插件在“Console.js”中，可以运行JS后注入进去。可以监听到JS的所有log。</p>
+        
         <script type="text/javascript">
             var console = {
-                log : function(taskId, message){
-                    window.webkit.messageHandlers.fenglin.postMessage({"className":"Conlose","functionName":"log","taskId":taskId,"data":message});
+                log : function(message){
+                    window.webkit.messageHandlers.fenglin.postMessage({
+                                                                      "classMap":"Conlose",
+                                                                      "method":"log",
+                                                                      "params":message,
+                                                                      "callbackId":1	 }
+                                                                      )
                 }
             }
         </script>
         <script type="text/javascript">
-            
-            Queue = [];
-            Task = {
-                id: 0,
-                callback: function(){},
-                errorCallback: function(){},
-                init: function(id, callback, errorCallback) {
-                    this.id = id;
-                    this.callback = callback;
-                    this.errorCallback = errorCallback;
-                    return this
-                }
-            };
-        fireTask = function(taskId, j) {
-            alert(Queue[taskId]);
-            Queue[taskId].callback(JSON.parse(j));
-            Queue.splice(taskId,1);
-            
-        };
-        onError = function (i, j) {
-            Queue[i].errorCallback(j);
-            alert(Queue[i]);
-            Queue.splice(i,1);
-        };
+            //native回调JS。
+            callBack = function(params){
+                // 对json解析
+                alert("回调成功！！！！");
+            }
+        //native直接调用JS。
+        callJS = function(params){
+            //      	    alert("调用JS成功！");
+            console.log({"invokeOK" : "OK"});
+        }
         
         
-        var btn = document.getElementById("invokeNative");
+        
+        var btn = document.getElementById("invokeNative1");
         
         btn.onclick = function(){
+            var  	params = {
+                "classMap":"SystemUtil",
+                "method":"call",
+                "params": {"phoneNumber":"15618211029"} ,
+                "callbackId":1
+            };
             
-            Queue.push(Task.init(Queue.length));
-            window.webkit.messageHandlers.fenglin.postMessage({"className":"Conlose","functionName":"log","taskId":Queue.length-1,"data":'message'});
+            window.webkit.messageHandlers.fenglin.postMessage(
+                                                              params
+                                                              );
+        };
+        
+        var btn1 = document.getElementById("invokeNative2");
+        
+        btn1.onclick = function(){
+            var  	params = { 
+                "classMap":"",
+                "method":"test:",
+                "params": {"phoneNumber":"15618211029"} ,
+                "callbackId":1	           
+            };
             
-            //          	 	console.log(1,"invokeNative success");
-            //              window.webkit.messageHandlers.fenglin.postMessage("Hello native");
-            //				window.webkit.messageHandlers.fenglin.postMessage({"className":"SystemUtil","functionName":"call:","data":15618211029});
-            //              window.webkit.messageHandlers.fenglin.postMessage({"className":"SystemUtil","functionName":"call","data":15618211029});
+            window.webkit.messageHandlers.fenglin.postMessage(
+                                                              params
+                                                              );
         };
         
         var btn2 = document.getElementById("alert");
         btn2.onclick = function(){
-            //				alert("AAA");
-            window.webkit.messageHandlers.fenglin.postMessage({"className":"SystemUtil","functionName":"call"})
+            alert("AAA");
         }
         
             </script>

@@ -8,25 +8,29 @@
 
 /* Begin PBXBuildFile section */
 		515E99951D51ED510093379E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515E99941D51ED510093379E /* AppDelegate.swift */; };
-		515E99971D51ED510093379E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515E99961D51ED510093379E /* ViewController.swift */; };
 		515E999A1D51ED510093379E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 515E99981D51ED510093379E /* Main.storyboard */; };
 		515E999C1D51ED510093379E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 515E999B1D51ED510093379E /* Assets.xcassets */; };
 		515E999F1D51ED510093379E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 515E999D1D51ED510093379E /* LaunchScreen.storyboard */; };
 		515E99A71D51EFA40093379E /* carkey.html in Resources */ = {isa = PBXBuildFile; fileRef = 515E99A61D51EFA40093379E /* carkey.html */; };
 		515E99A91D5208DC0093379E /* SystemUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515E99A81D5208DC0093379E /* SystemUtil.swift */; };
+		515E99AB1D52DAB60093379E /* WebViewMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515E99AA1D52DAB60093379E /* WebViewMediator.swift */; };
+		515E99AD1D52E2F50093379E /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515E99AC1D52E2F40093379E /* TestViewController.swift */; };
+		515E99AF1D5329D80093379E /* Console.js in Resources */ = {isa = PBXBuildFile; fileRef = 515E99AE1D5329D80093379E /* Console.js */; };
 		51829B7E1D52200400CA5B8F /* JSPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51829B7D1D52200300CA5B8F /* JSPlugin.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		515E99911D51ED510093379E /* HybirdSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HybirdSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		515E99941D51ED510093379E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		515E99961D51ED510093379E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		515E99991D51ED510093379E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		515E999B1D51ED510093379E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		515E999E1D51ED510093379E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		515E99A01D51ED510093379E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		515E99A61D51EFA40093379E /* carkey.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = carkey.html; sourceTree = "<group>"; };
 		515E99A81D5208DC0093379E /* SystemUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemUtil.swift; sourceTree = "<group>"; };
+		515E99AA1D52DAB60093379E /* WebViewMediator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewMediator.swift; sourceTree = "<group>"; };
+		515E99AC1D52E2F40093379E /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		515E99AE1D5329D80093379E /* Console.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Console.js; sourceTree = "<group>"; };
 		51829B7D1D52200300CA5B8F /* JSPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSPlugin.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -61,10 +65,12 @@
 			isa = PBXGroup;
 			children = (
 				515E99941D51ED510093379E /* AppDelegate.swift */,
-				515E99961D51ED510093379E /* ViewController.swift */,
+				515E99AC1D52E2F40093379E /* TestViewController.swift */,
+				515E99AA1D52DAB60093379E /* WebViewMediator.swift */,
 				515E99A81D5208DC0093379E /* SystemUtil.swift */,
 				51829B7D1D52200300CA5B8F /* JSPlugin.swift */,
 				515E99A61D51EFA40093379E /* carkey.html */,
+				515E99AE1D5329D80093379E /* Console.js */,
 				515E99981D51ED510093379E /* Main.storyboard */,
 				515E999B1D51ED510093379E /* Assets.xcassets */,
 				515E999D1D51ED510093379E /* LaunchScreen.storyboard */,
@@ -134,6 +140,7 @@
 				515E999F1D51ED510093379E /* LaunchScreen.storyboard in Resources */,
 				515E99A71D51EFA40093379E /* carkey.html in Resources */,
 				515E999C1D51ED510093379E /* Assets.xcassets in Resources */,
+				515E99AF1D5329D80093379E /* Console.js in Resources */,
 				515E999A1D51ED510093379E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -147,8 +154,9 @@
 			files = (
 				515E99A91D5208DC0093379E /* SystemUtil.swift in Sources */,
 				51829B7E1D52200400CA5B8F /* JSPlugin.swift in Sources */,
-				515E99971D51ED510093379E /* ViewController.swift in Sources */,
 				515E99951D51ED510093379E /* AppDelegate.swift in Sources */,
+				515E99AD1D52E2F50093379E /* TestViewController.swift in Sources */,
+				515E99AB1D52DAB60093379E /* WebViewMediator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,7 +14,7 @@ import WebKit
 protocol JSPluginDelegate {
     var _web : WKWebView! { set get}
     var _taskId : Int!    { set get}
-    var _data : String?   { set get}
+    var _data : NSDictionary?   { set get}
     func callback(values: NSDictionary?, compeletion: ((success: Bool, error: NSError?)->Void)?);
     func errorCallback(errorMessage : String);
 }
@@ -23,7 +23,7 @@ protocol JSPluginDelegate {
 class JSPlugin: NSObject, JSPluginDelegate {
     var _web: WKWebView!
     var _taskId: Int!
-    var _data: String?
+    var _data: NSDictionary?
     required override init() {
         
     }
@@ -58,15 +58,17 @@ class JSPlugin: NSObject, JSPluginDelegate {
     
     func errorCallback(errorMessage: String) {
         let js = "fireTask(\(self._taskId),\(errorMessage))";
-        self._web.evaluateJavaScript(js, completionHandler: nil);
+        self._web.evaluateJavaScript(js) { (response : AnyObject?, error : NSError?) in
+            
+        }
     }
 }
 
 //MARK : 自定义实现JS conlose.log()；方法；
 
 class Conlose: JSPlugin {
-    func log()  {
-        print(self._data!);
+    func js_log()  {
+        print(self._data);
     }
 }
 
